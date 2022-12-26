@@ -1,5 +1,46 @@
 ---
 apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: default-org
+  namespace: tap-workload
+  description: The Default Organization
+  links:
+    - url: https://tanzu.vmware.com/support
+      title: Tanzu Support Website
+spec:
+  type: organization
+  profile:
+    displayName: Default Organization
+    email: demo@example.com
+    picture: https://avatars.dicebear.com/api/identicon/info@example.com.svg?background=%23fff&margin=25
+  children: [default-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: default-team
+  namespace: tap-workload
+  description: Default Team
+spec:
+  type: team
+  profile:
+    displayName: Default Team
+    email: team-a@example.com
+    picture: https://avatars.dicebear.com/api/identicon/team-a@example.com.svg?background=%23fff&margin=25
+  parent: default-org
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: pets
+  namespace: tap-workload
+  description: Everything related to Petclinic
+spec:
+  owner: pets-team
+---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: petclinic
@@ -16,7 +57,7 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: default-team
+  owner: pets-team
   system: petclinic
   providesApis: 
     - petclinic-dev
@@ -30,5 +71,5 @@ metadata:
   annotations:
     'backstage.io/techdocs-ref': dir:../.
 spec:
-  owner: default-team
-  domain: cloud-apps
+  owner: pets-team
+  domain: pets

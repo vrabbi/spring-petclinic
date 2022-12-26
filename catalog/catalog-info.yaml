@@ -17,6 +17,8 @@ spec:
   type: service
   lifecycle: experimental
   owner: default-team
+  providesApis: 
+    - petclinic-dev
 ---
 apiVersion: backstage.io/v1alpha1
 kind: System

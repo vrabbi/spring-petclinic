@@ -41,6 +41,18 @@ spec:
   owner: pets-team
 ---
 apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: petclinic
+  namespace: tap-workload
+  description: Spring Petclinic Demo Application
+  annotations:
+    'backstage.io/techdocs-ref': dir:../.
+spec:
+  owner: pets-team
+  domain: pets
+---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: petclinic
@@ -61,15 +73,3 @@ spec:
   system: petclinic
   providesApis: 
     - petclinic-dev
----
-apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  name: petclinic
-  namespace: tap-workload
-  description: Spring Petclinic Demo Application
-  annotations:
-    'backstage.io/techdocs-ref': dir:../.
-spec:
-  owner: pets-team
-  domain: pets

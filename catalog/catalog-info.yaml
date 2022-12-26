@@ -17,6 +17,7 @@ spec:
   type: service
   lifecycle: experimental
   owner: default-team
+  system: petclinic
   providesApis: 
     - petclinic-dev
 ---

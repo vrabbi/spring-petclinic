@@ -1,0 +1,6 @@
+---
+site_name: Spring Petclinic Demo Application
+nav:
+  - Readme: docs/index.md
+plugins:
+  - techdocs-core

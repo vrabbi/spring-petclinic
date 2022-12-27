@@ -26,10 +26,7 @@ import org.springframework.context.annotation.ImportRuntimeHints;
  * @author Dave Syer
  *
  */
-@Bean
-public HttpTraceRepository htttpTraceRepository() {
-	return new InMemoryHttpTraceRepository();
-};
+
 
 @SpringBootApplication
 @ImportRuntimeHints(PetClinicRuntimeHints.class)

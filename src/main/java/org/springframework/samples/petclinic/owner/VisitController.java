@@ -20,6 +20,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -72,6 +73,7 @@ class VisitController {
 
 	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is
 	// called
+	@CrossOrigin(origins = "*")
 	@GetMapping("/owners/{ownerId}/pets/{petId}/visits/new")
 	public String initNewVisitForm() {
 		return "pets/createOrUpdateVisitForm";
@@ -79,6 +81,7 @@ class VisitController {
 
 	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is
 	// called
+	@CrossOrigin(origins = "*")
 	@PostMapping("/owners/{ownerId}/pets/{petId}/visits/new")
 	public String processNewVisitForm(@ModelAttribute Owner owner, @PathVariable int petId, @Valid Visit visit,
 			BindingResult result) {

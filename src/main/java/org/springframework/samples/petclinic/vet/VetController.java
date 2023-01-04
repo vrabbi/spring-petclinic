@@ -22,6 +22,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,6 +42,7 @@ class VetController {
 		this.vetRepository = clinicService;
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/vets.html")
 	public String showVetList(@RequestParam(defaultValue = "1") int page, Model model) {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet
@@ -67,6 +69,7 @@ class VetController {
 		return vetRepository.findAll(pageable);
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping({ "/vets" })
 	public @ResponseBody Vets showResourcesVetList() {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet

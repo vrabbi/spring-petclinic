@@ -17,11 +17,13 @@
 package org.springframework.samples.petclinic.system;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 class WelcomeController {
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/")
 	public String welcome() {
 		return "welcome";

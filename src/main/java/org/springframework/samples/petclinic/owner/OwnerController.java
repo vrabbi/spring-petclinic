@@ -25,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -62,6 +63,7 @@ class OwnerController {
 		return ownerId == null ? new Owner() : this.owners.findById(ownerId);
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/owners/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Owner owner = new Owner();
@@ -69,6 +71,7 @@ class OwnerController {
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 	}
 
+	@CrossOrigin(origins = "*")
 	@PostMapping("/owners/new")
 	public String processCreationForm(@Valid Owner owner, BindingResult result) {
 		if (result.hasErrors()) {
@@ -79,12 +82,14 @@ class OwnerController {
 		return "redirect:/owners/" + owner.getId();
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/owners/find")
 	public String initFindForm(Map<String, Object> model) {
 		model.put("owner", new Owner());
 		return "owners/findOwners";
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/owners")
 	public String processFindForm(@RequestParam(defaultValue = "1") int page, Owner owner, BindingResult result,
 			Model model) {
@@ -127,6 +132,7 @@ class OwnerController {
 		return owners.findByLastName(lastname, pageable);
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/owners/{ownerId}/edit")
 	public String initUpdateOwnerForm(@PathVariable("ownerId") int ownerId, Model model) {
 		Owner owner = this.owners.findById(ownerId);
@@ -134,6 +140,7 @@ class OwnerController {
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 	}
 
+	@CrossOrigin(origins = "*")
 	@PostMapping("/owners/{ownerId}/edit")
 	public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result,
 			@PathVariable("ownerId") int ownerId) {
@@ -151,6 +158,7 @@ class OwnerController {
 	 * @param ownerId the ID of the owner to display
 	 * @return a ModelMap with the model attributes for the view
 	 */
+	@CrossOrigin(origins = "*")
 	@GetMapping("/owners/{ownerId}")
 	public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
 		ModelAndView mav = new ModelAndView("owners/ownerDetails");

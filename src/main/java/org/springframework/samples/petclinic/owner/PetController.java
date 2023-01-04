@@ -22,6 +22,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,6 +38,7 @@ import jakarta.validation.Valid;
  * @author Arjen Poutsma
  */
 @Controller
+@CrossOrigin(origins = "*")
 @RequestMapping("/owners/{ownerId}")
 class PetController {
 
@@ -74,6 +76,7 @@ class PetController {
 		dataBinder.setValidator(new PetValidator());
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/pets/new")
 	public String initCreationForm(Owner owner, ModelMap model) {
 		Pet pet = new Pet();
@@ -82,6 +85,7 @@ class PetController {
 		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
 	}
 
+	@CrossOrigin(origins = "*")
 	@PostMapping("/pets/new")
 	public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, ModelMap model) {
 		if (StringUtils.hasLength(pet.getName()) && pet.isNew() && owner.getPet(pet.getName(), true) != null) {
@@ -98,6 +102,7 @@ class PetController {
 		return "redirect:/owners/{ownerId}";
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/pets/{petId}/edit")
 	public String initUpdateForm(Owner owner, @PathVariable("petId") int petId, ModelMap model) {
 		Pet pet = owner.getPet(petId);
@@ -105,6 +110,7 @@ class PetController {
 		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
 	}
 
+	@CrossOrigin(origins = "*")
 	@PostMapping("/pets/{petId}/edit")
 	public String processUpdateForm(@Valid Pet pet, BindingResult result, Owner owner, ModelMap model) {
 		if (result.hasErrors()) {

@@ -16,12 +16,17 @@
 
 package org.springframework.samples.petclinic.system;
 
+import org.springdoc.core.utils.SpringDocUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 class WelcomeController {
+
+	static {
+		SpringDocUtils.getConfig().addRestControllers(WelcomeController.class);
+	}
 
 	@CrossOrigin(origins = "*")
 	@GetMapping("/")

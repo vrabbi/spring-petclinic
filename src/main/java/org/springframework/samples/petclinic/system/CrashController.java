@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.system;
 
+import org.springdoc.core.utils.SpringDocUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 class CrashController {
+
+	static {
+		SpringDocUtils.getConfig().addRestControllers(CrashController.class);
+	}
 
 	@CrossOrigin(origins = "*")
 	@GetMapping("/oups")

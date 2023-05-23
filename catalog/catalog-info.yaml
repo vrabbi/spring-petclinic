@@ -72,4 +72,4 @@ spec:
   owner: pets-team
   system: petclinic
   providesApis: 
-    - petclinic-dev
+    - petclinic-tap-lab.terasky.demo

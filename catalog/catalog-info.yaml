@@ -3,7 +3,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: default-org
-  namespace: workloads
+  namespace: tap-workload
   description: The Default Organization
   links:
     - url: https://tanzu.vmware.com/support
@@ -20,7 +20,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: pets-team
-  namespace: workloads
+  namespace: tap-workload
   description: Default Team
 spec:
   type: team
@@ -35,7 +35,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Domain
 metadata:
   name: pets
-  namespace: workloads
+  namespace: tap-workload
   description: Everything related to Petclinic
 spec:
   owner: pets-team
@@ -44,7 +44,7 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: petclinic
-  namespace: workloads
+  namespace: tap-workload
   description: Spring Petclinic Demo Application
   annotations:
     'backstage.io/techdocs-ref': dir:../.
@@ -56,7 +56,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: petclinic
-  namespace: workloads
+  namespace: tap-workload
   description: Spring PetClinic
   tags:
     - app-accelerator
@@ -72,4 +72,4 @@ spec:
   owner: pets-team
   system: petclinic
   providesApis: 
-    - petclinic-tap-lab.terasky.demo
+    - petclinic

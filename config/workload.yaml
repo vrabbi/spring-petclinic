@@ -2,6 +2,7 @@ apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
   labels:
+    backstage.io/kubernetes-id: petclinic
     apis.apps.tanzu.vmware.com/register-api: "true"
     app.kubernetes.io/part-of: petclinic
     apps.tanzu.vmware.com/auto-configure-actuators: "true"

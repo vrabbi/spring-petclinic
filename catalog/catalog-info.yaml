@@ -3,7 +3,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: default-org
-  namespace: test
+  namespace: api-demo
   description: The Default Organization
   links:
     - url: https://google.com
@@ -22,7 +22,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: pets-team
-  namespace: test
+  namespace: api-demo
   description: Default Team
 spec:
   type: team
@@ -37,7 +37,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Domain
 metadata:
   name: pets
-  namespace: test
+  namespace: api-demo
   description: Everything related to Petclinic
 spec:
   owner: pets-team
@@ -46,7 +46,7 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: petclinic
-  namespace: test
+  namespace: api-demo
   description: Spring Petclinic Demo Application
   annotations:
     'backstage.io/techdocs-ref': dir:../.
@@ -58,7 +58,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: petclinic
-  namespace: test
+  namespace: api-demo
   description: Spring PetClinic
   tags:
     - app-accelerator
@@ -73,4 +73,4 @@ spec:
   owner: pets-team
   system: petclinic
   providesApis: 
-    - petclinic-8210aa7e
+    - petclinic-16952cfa
